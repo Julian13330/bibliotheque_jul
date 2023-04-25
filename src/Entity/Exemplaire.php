@@ -65,4 +65,9 @@ class Exemplaire
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getId().' '.$this->getLivre();
+    }
 }
