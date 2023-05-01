@@ -14,7 +14,7 @@ class EmpruntCrudController extends AbstractCrudController
         return Emprunt::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         yield from parent::configureFields($pageName);
@@ -22,5 +22,5 @@ class EmpruntCrudController extends AbstractCrudController
         yield AssociationField::new('exemplaire');
         yield AssociationField::new('adherent');
     }
-    */
+    
 }
