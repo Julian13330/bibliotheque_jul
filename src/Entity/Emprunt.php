@@ -99,6 +99,7 @@ class Emprunt
         return $this;
     }
 
+    /*
     public function setDatePrevisionnelle(): self
     {
         $datePrevisionnelle = DateTime::createFromInterface($this->getDateEmprunt());
@@ -106,9 +107,15 @@ class Emprunt
         $this->setDatePrevisionnelle($datePrevisionnelle);
         return $datePrevisionnelle;
     }
+    */
 
     public function getDatePrevisionnelle(): ?\DateTimeInterface
     {
-        return $this->date_previsionnelle;
+        $datePrevisionnelle = null;
+        if ($this->getDateEmprunt()) {
+        $datePrevisionnelle = DateTime::createFromInterface($this->getDateEmprunt());
+        $datePrevisionnelle->modify('+20days');
+        }
+        return $datePrevisionnelle;
     }
 }
