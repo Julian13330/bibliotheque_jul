@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Adherent;
+use App\Entity\Admin;
 use App\Entity\Auteur;
 use App\Entity\Editeur;
 use App\Entity\Emprunt;
@@ -21,25 +22,7 @@ class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
     public function index(): Response
-    {
-        //return parent::index();
-
-        // Option 1. You can make your dashboard redirect to some common page of your backend
-        //
-        // $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        // return $this->redirect($adminUrlGenerator->setController(OneOfYourCrudController::class)->generateUrl());
-
-        // Option 2. You can make your dashboard redirect to different pages depending on the user
-        //
-        // if ('jane' === $this->getUser()->getUsername()) {
-        //     return $this->redirect('...');
-        // }
-
-        // Option 3. You can render some custom template to display a proper dashboard with widgets, etc.
-        // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
-        //
-        // return $this->render('some/path/my-dashboard.html.twig');
-            
+    {       
         return $this->render('admin/dashboard.html.twig');
     }
 
@@ -56,10 +39,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Editeur', 'fas fa-user', Editeur::class);
         yield MenuItem::linkToCrud('Auteur', 'fas fa-users', Auteur::class);
         yield MenuItem::linkToCrud('Usure', 'fas fa-list', Usure::class);
-        yield MenuItem::linkToCrud('Stock', 'fas fa-list', Stock::class);
-        yield MenuItem::linkToCrud('Livre', 'fas fa-book', Livre::class);
+        yield MenuItem::linkToCrud('Stock', 'fa-solid fa-cubes-stacked', Stock::class);
+        yield MenuItem::linkToCrud('Livre', 'fas fa-book-open', Livre::class);
         yield MenuItem::linkToCrud('Exemplaire', 'fas fa-book', Exemplaire::class);
-        yield MenuItem::linkToCrud('Emprunt', 'fas fa-book', Emprunt::class);
-        yield MenuItem::linkToCrud('Adherent', 'fas fa-book', Adherent::class);
+        yield MenuItem::linkToCrud('Emprunt', 'fa-solid fa-money-bill-trend-up', Emprunt::class);
+        yield MenuItem::linkToCrud('Adherent', 'fa-solid fa-book-open-reader', Adherent::class);
+        yield MenuItem::linkToCrud('Admin', 'fa-solid fa-book-open-reader', Admin::class);
     }
 }
